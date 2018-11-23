@@ -72,6 +72,6 @@ def generate_xmltv(station_list, hours):
 def send_to_tvheadend(message):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     socket_address = '/home/hts/.hts/tvheadend/epggrab/xmltv.sock'
-    sock.connect()
-    sock.sendall(message)
+    sock.connect(socket_address)
+    sock.sendall(message.encode())
     sock.close()
