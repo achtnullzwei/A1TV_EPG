@@ -10,8 +10,8 @@ Usage:
 python a1tv_epg.py (-o FILE | -d)
 
 Possible command Line options:
-"-d" Imports directly into tvheadend via socket.
 
+"-d" Imports directly into tvheadend via socket.
 "-f" FILE Outputs a XML File. Specify path + filename
 
 Using no command line options will default in writing "xmltv.xml" to the directory relative to the script.
