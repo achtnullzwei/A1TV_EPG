@@ -78,7 +78,7 @@ def send_to_tvheadend(message):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     socket_address = '/home/hts/.hts/tvheadend/epggrab/xmltv.sock'
     sock.connect(socket_address)
-    sock.sendall(message.encode())
+    sock.sendall(message.encode('utf-8'))
     sock.close()
 
 def sate_to_file(data, filename='xmltv.xml'):
