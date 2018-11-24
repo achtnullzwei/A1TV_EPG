@@ -7,7 +7,7 @@ from io import BytesIO
 import socket
 
 # A1TV_EPG imports
-from api.api import *
+from .api import *
 
 # Functions start
 
