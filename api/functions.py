@@ -18,11 +18,17 @@ def load_epg_light(station_list, hours=26):
     programme = []
     channel = []
 
+# Need to get station ids. request_station_details delivers the Station UIDs
+# They do not match the correct channel icons in some times. Regular Station IDs
+# need to be used.
+
+    station_ids = request_channel_ids()
+
     if query:
         for stations in query:
             channel.append({'id': stations[1],'display-name': stations[1],
-                            'icon': 'http://epggw.a1.net/img/station-globalid/darkbg/300x160/'
-                            + str(stations[0]) + '.png'})
+                            'icon': 'http://epggw.a1.net/img/station-globalid/darkbg/500x300/'
+                            + station_ids[stations[1]] + '.png'})
 
             for events in stations[2]:
 
