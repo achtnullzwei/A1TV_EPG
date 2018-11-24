@@ -3,7 +3,6 @@
 # Global imports
 import time
 from xml.etree import ElementTree as ET
-from io import BytesIO
 import socket
 
 # A1TV_EPG imports
@@ -71,7 +70,7 @@ def generate_xmltv(station_list, hours):
         for tv_category in tv_programme['category']:
             ET.SubElement(xml_programme, 'category', {'lang': 'en'}).text = tv_category
 
-    return ET.tostring(tv, encoding='utf8', method='xml')
+    return ET.tostring(tv, encoding='utf8', method='xml').decode('utf8')
 
 
 
@@ -81,3 +80,7 @@ def send_to_tvheadend(message):
     sock.connect(socket_address)
     sock.sendall(message.encode())
     sock.close()
+
+def sate_to_file(data, filename='xmltv.xml'):
+    with open(filename, 'w') as file:
+        file.write(str(data))
