@@ -1,8 +1,8 @@
 # Functions to query the A1 EPG API
 try:
-    import urllib.parse
+    from urllib.parse import urlencode
 except ImportError:
-    import urlparse
+    from urlparse import urlencode
 import requests
 import time
 import stations
