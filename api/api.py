@@ -91,3 +91,27 @@ def request_event_desc(event_id):
 
 
     return data
+
+
+
+# Get all station IDs and pretty names. Necessary to get the correct channel icons
+# There are some issues when using the stationuid. Not all channel icons are correct
+# then
+
+def request_channel_ids():
+
+    url = "https://epggw.a1.net/a/api.mobile.start?type=JSON.3"
+
+    data = {}
+
+    query_response = query_url(url)
+
+    # Check status and raise exception if not 200
+    status = query_response[0][0]
+    if status != 200:
+        raise ValueError('Station Query did not return status code 200. Status Code: ' + str(status))
+
+    for station in query_response[3]:
+        data[str(station[2])] = str(station[0])
+
+    return data
