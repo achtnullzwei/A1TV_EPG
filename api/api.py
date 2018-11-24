@@ -114,6 +114,6 @@ def request_channel_ids():
         raise ValueError('Station Query did not return status code 200. Status Code: ' + str(status))
 
     for station in query_response[3]:
-        data[str(station[2])] = str(station[0])
+        data[station[2]] = str(station[0])
 
     return data
