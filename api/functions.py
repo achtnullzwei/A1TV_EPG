@@ -71,7 +71,7 @@ def generate_xmltv(station_list, hours):
         for tv_category in tv_programme['category']:
             ET.SubElement(xml_programme, 'category', {'lang': 'en'}).text = tv_category
 
-    return ET.tostring(tv, encoding='utf8', method='xml').decode()
+    return ET.tostring(tv, encoding='utf8', method='xml')
 
 
 
