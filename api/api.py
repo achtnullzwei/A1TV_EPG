@@ -2,7 +2,7 @@
 try:
     import urllib.parse
 except ImportError:
-    from urlparse import urlparse as urllib.parse
+    from urlparse import urlparse as urllibx
 import requests
 import time
 import stations
