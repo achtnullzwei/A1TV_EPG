@@ -1,11 +1,14 @@
 # Functions to query the A1 EPG API
+
+#General imports
+import requests, time
+
+#Fix for Python2/3 Urllib issues
 try:
     from urllib.parse import urlencode
 except ImportError:
     from urllib import urlencode
-import requests
-import time
-import stations
+
 
 rs = requests.session()
 
