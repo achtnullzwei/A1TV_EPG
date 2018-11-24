@@ -5,6 +5,9 @@ Works with python 2.7 and 3 (Tested on Bionic Beaver and MacOS Mojave)
 
 v.01 Very early version. Only for testing
 
+Usage:
+
+python a1tv_epg.py (-o FILE | -d)
 
 Possible command Line options:
 "-d" Imports directly into tvheadend via socket.
