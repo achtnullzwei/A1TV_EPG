@@ -1,8 +1,8 @@
 # Functions to query the A1 EPG API
 try:
-    import urllib.parse
+    from urllib.parse import urlencode
 except ImportError:
-    from urlparse import urlparse as urllib
+    from urlparse import urlencode
 import requests
 import time
 import stations
@@ -58,7 +58,7 @@ def request_station_details(station_id,hours):
 
 
     # Encode Url and query the API
-    url = api_root + urllib.parse.urlencode(query_params)
+    url = api_root + urlencode(query_params)
     data = query_url(url)
 
 
@@ -82,7 +82,7 @@ def request_event_desc(event_id):
     data = []
 
     query_params = {'evid': event_id, 'type': 'JSON.3'}
-    url = api_root + urllib.parse.urlencode(query_params)
+    url = api_root + urlencode(query_params)
     query_response = query_url(url)
     # Check status and raise exception if not 200
     status = query_response['head']['Status']
