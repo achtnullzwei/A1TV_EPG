@@ -82,5 +82,5 @@ def send_to_tvheadend(message):
     sock.close()
 
 def sate_to_file(data, filename='xmltv.xml'):
-    with open(filename, 'w') as file:
-        file.write(data)
+    with open(filename, 'wb') as file:
+        file.write(data.encode('utf-8'))
