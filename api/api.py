@@ -74,30 +74,6 @@ def request_station_details(station_id,hours):
 
 
 
-# Function to query to details of a certain event. Referenced by the id of the events
-# Returns details of the event as JSON data
-
-def request_event_desc(event_id):
-
-    # Check if multiple of only one station is queried and encode url properly
-    api_root = "https://epggw.a1.net/a/api.mobile.event.get?"
-
-    data = []
-
-    query_params = {'evid': event_id, 'type': 'JSON.3'}
-    url = api_root + urlencode(query_params)
-    query_response = query_url(url)
-    # Check status and raise exception if not 200
-    status = query_response['head']['Status']
-    if status != 200:
-        raise ValueError('Event Detail Query did not return status code 200. Status Code: ' + str(status))
-
-    data = query_response['data'][0]['Event']['Description']
-
-
-    return data
-
-
 
 # Get all station IDs and pretty names. Necessary to get the correct channel icons
 # There are some issues when using the stationuid. Not all channel icons are correct
