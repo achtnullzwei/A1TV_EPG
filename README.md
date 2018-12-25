@@ -59,6 +59,8 @@ git pull
 ### 4. Usage
 The script accepts some command line arguments. The full list can be retrieved starting the tool with *-h* or *--help*
 
+*Depending on you setup, the path to pyhton might not be /usr/bin/python !*
+
 Output of this command:
 ```
 usage: a1tv_epg.py [-h] [-o Filename | -d] [-t [Time in hours]] [-u]
@@ -109,7 +111,7 @@ python /opt/A1TV_EPG/a1tv_epg.py
 ```
 
 #### 4.4 Updating channel list or change to another type of channel list (basic, plus):
-##### 4.4.1 Updating the channel list: 
+##### 4.4.1 Updating the channel list:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -u
 ```
