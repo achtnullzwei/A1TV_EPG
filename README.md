@@ -8,7 +8,7 @@ Currently it does not support loading a description for a selected program. The 
 **Use this tool at you own risk and and to net stress the API too much. We are thankful that A1 provides it and we should not risk getting banned, or force them to restrict this somehow**
 
 ### Requirements
-The tool itself is written to be compatible with Python 2.7 & Python 3.7. It has been tested and works in at least the following setups:
+The tool itself is written to be compatible with Python 2.7 & Python 3.7. It has been tested and works with, at least, the following setups:
 - Raspbian Stretch (Python 2.7)
 - Ubuntu Bionic Beaver (Python 2.7)
 - MacOS Mojave (Python 2.7 & Python 3.7, both with miniconda envs)
