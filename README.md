@@ -29,15 +29,21 @@ pip install requests
 Installation is pretty straight forward.
 
 Choose or create a directory of your choice to save and run the script.
+```
     Example:
     mkdir /opt
     cd /opt
+```
 
 Git clone the repository to this directory.
-    git clone https://github.com/achtnullzwei/A1TV_EPG.git
+```
+git clone https://github.com/achtnullzwei/A1TV_EPG.git
+```
 
 Change to the directory to run the script
-    cd /opt/A1TV_EPG
+```
+cd /opt/A1TV_EPG
+```
 
 ### Usage
 The script accepts some command line arguments. The full list can be retrieved starting the tool with *-h* or *--help*
