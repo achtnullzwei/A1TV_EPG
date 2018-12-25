@@ -16,10 +16,14 @@ The tool itself is written to be compatible with Python 2.7 & Python 3.7. It has
 Apart from the standard python installation that comes with the distributions the only requirement is the module "Requests".
 
 It can be installed either via:
-    sudo apt-get install python-requests
+```
+sudo apt-get install python-requests
+```
 
 or:
-    pip install requests
+```
+pip install requests
+```
 
 ### Installation
 Installation is pretty straight forward.
@@ -39,7 +43,7 @@ Change to the directory to run the script
 The script accepts some command line arguments. The full list can be retrieved starting the tool with *-h* or *--help*
 
 Output of this command:
-'''
+```
 usage: a1tv_epg.py [-h] [-o Filename | -d] [-t [Time in hours]] [-u]
                    [-c basic, plus]
 
@@ -60,4 +64,4 @@ optional arguments:
   -c basic, plus      Change channels to A1TV basic or A1TV plus. Default is
                       A1TV plus. Loads new EPG data. Change is stored in JSON
                       file and persistent.
-'''
+```
