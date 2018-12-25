@@ -28,6 +28,11 @@ pip install requests
 ### Installation
 Installation is pretty straight forward.
 
+Install git if not installed:
+```
+sudo apt-get install git
+```
+
 Choose or create a directory of your choice to save and run the script (Example).
 ```
 mkdir /opt
