@@ -97,13 +97,13 @@ python /opt/A1TV_EPG/a1tv_epg.py
 ```
 
 #### Updating channel list or change to another type of channel list (basic, plus):
-Updating the channel list:
+##### Updating the channel list:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -u
 ```
 This will not result in an updated XMLTV file. The channel list is automatically updated every 7 days **before** loading the EPG.
 
-Changing the channel list:
+##### Changing the channel list:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -c basic
 ```
