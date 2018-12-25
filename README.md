@@ -1,11 +1,11 @@
 ## A1TV_EPG
 
 ### Description
-This tool queries the API provided by A1 for their TV Program App and it's written in Python. It uses their API to query for channel information and program information. It then either generates an XMLTV formatted XML file, or sends the information directly to TVHeadend via UNIX socket (separate settings in TVHeadend required). A channel list is retrieved upon first start. It defaults to A1TV Plus (includes HD channels). It can be switched to basic also, to avoid loading unnecessary data. The station list is updated every 7 days automatically (can be updated manually). The default hours of EPG data to be loaded is set to 26. The maximum time period is set to 48 hours to avoid stressing the API too much. Also the channel details are filled with the naming etc. directly from A1. This is helpful when using their M3U for TVHeadend since it automatically matches the EPG to the channels.
+This tool queries the API provided by A1 for their TV Program App and it's written in Python. It uses their API to query for channel information and program information. It then either generates an XMLTV formatted XML file, or sends the information directly to TVHeadend via UNIX socket (separate settings in TVHeadend required). A channel list is retrieved upon first start from the XSPF playlists provided by A1. It defaults to A1TV Plus (includes HD channels). It can be switched to basic also, to avoid loading unnecessary data. The station list is updated every 7 days automatically (can be updated manually). The default hours of EPG data to be loaded is set to 26. The maximum time period is set to 48 hours to avoid stressing the API too much. Also the channel details are filled with the naming etc. directly from A1. This is helpful when using their M3U for TVHeadend since it automatically matches the EPG to the channels. Furthermore it also automatically adds channel icon URLs to the XMLTV file (500x300px).
 
 Currently it does not support loading a description for a selected program. The API does not provide the possibility to query for a bulk of programs in order to retrieve the description details. Working around this limitation would result in the script running for a very long time (approx. 3-5h when querying the API with a maximum of 10-20 calls per minute).
 
-** Use this tool at you own risk and and to net stress the API too much. We are thankful that A1 provides it and we should not risk getting banned, or force them to restrict this somehow **
+**Use this tool at you own risk and and to net stress the API too much. We are thankful that A1 provides it and we should not risk getting banned, or force them to restrict this somehow**
 
 ### Requirements
 The tool itself is written to be compatible with Python 2.7 & Python 3.7. It has been tested and works in at least the following setups:
@@ -28,11 +28,10 @@ pip install requests
 ### Installation
 Installation is pretty straight forward.
 
-Choose or create a directory of your choice to save and run the script.
+Choose or create a directory of your choice to save and run the script (Example).
 ```
-    Example:
-    mkdir /opt
-    cd /opt
+mkdir /opt
+cd /opt
 ```
 
 Git clone the repository to this directory.
@@ -71,3 +70,55 @@ optional arguments:
                       A1TV plus. Loads new EPG data. Change is stored in JSON
                       file and persistent.
 ```
+
+#### Eaxmple for using UNIX socket import on TVHeadend:
+```
+python /opt/A1TV_EPG/a1tv_epg.py -d
+```
+This command loads 26 hours of EPG data for A1TV Plus channels and sends them directly to TVHeadend.
+
+**Prerequisites for this usage:**
+In order to use this feature activate the following in TVHeadend:
+1. Login to TVHeadend as admin.
+2. Go to Configuration --> Channel / EPG --> EPG-Grabber-Modules
+3. Click on "External: XMLTV"
+4. Activate the checkbox "Enabled" and click "Save"
+This will activate the UNIX socket for XMLTV import.
+
+#### Example for saving to a file:
+```
+python /opt/A1TV_EPG/a1tv_epg.py -o /home/hts/xmltv.xml
+```
+This will save the XMLTV file to the location */home/hts/xmltv.xml*
+
+#### Default behaviour:
+Starting the script simply without any commandline arguments will result in an xmltv.file saved next to the script. It contains 26h of EPG data for A1TV Plus channels.
+```
+python /opt/A1TV_EPG/a1tv_epg.py
+```
+
+#### Updating channel list or change to another type of channel list (basic, plus):
+**Updating the channel list:**
+```
+python /opt/A1TV_EPG/a1tv_epg.py -u
+```
+This will not result in an updated XMLTV file. The channel list is automatically updated every 7 days **before** loading the EPG.
+
+**Changing the channel list:**
+```
+python /opt/A1TV_EPG/a1tv_epg.py -c basic
+```
+Changes the channel list to A1TV basic and reloads updates XMLTV data via socket or replaces the file specified.
+
+#### Automation of the script
+Simplest solution to run it every night:
+```
+sudo crontab -e
+```
+Add the following line for sending directly to the UNIX socket every night (just change the command line arguments to your needs):
+```
+5 */12 * * * /usr/bin/python /opt/A1TV_EPG/a1tv_epg.py -d
+```
+*Don't forget to run the script initially so it retrieves the first hours of EPG data.*
+
+Another option would be to use timers with systemctl. How to set this up can easily be found via Google.
