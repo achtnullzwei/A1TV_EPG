@@ -109,7 +109,7 @@ python /opt/A1TV_EPG/a1tv_epg.py
 ```
 
 #### 4.4 Updating channel list or change to another type of channel list (basic, plus):
-##### 4.4.1 Updating the channel list:
+##### 4.4.1 Updating the channel list: 
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -u
 ```
