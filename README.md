@@ -48,6 +48,13 @@ Change to the directory to run the script
 ```
 cd /opt/A1TV_EPG
 ```
+### Updating the script
+Simply update via git pull.
+
+```
+cd /opt/A1TV_EPG
+git pull
+```
 
 ### Usage
 The script accepts some command line arguments. The full list can be retrieved starting the tool with *-h* or *--help*
