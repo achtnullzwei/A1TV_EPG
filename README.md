@@ -77,7 +77,6 @@ python /opt/A1TV_EPG/a1tv_epg.py -d
 ```
 This command loads 26 hours of EPG data for A1TV Plus channels and sends them directly to TVHeadend.
 
-**Prerequisites for this usage:**
 In order to use this feature activate the following in TVHeadend:
 1. Login to TVHeadend as admin.
 2. Go to Configuration --> Channel / EPG --> EPG-Grabber-Modules
