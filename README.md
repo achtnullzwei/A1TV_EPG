@@ -7,7 +7,7 @@ Currently it does not support loading a description for a selected program. The 
 
 **Use this tool at you own risk and and to net stress the API too much. We are thankful that A1 provides it and we should not risk getting banned, or force them to restrict this somehow**
 
-### Requirements
+### 1. Requirements
 The tool itself is written to be compatible with Python 2.7 & Python 3.7. It has been tested and works with, at least, the following setups:
 - Raspbian Stretch (Python 2.7)
 - Ubuntu Bionic Beaver (Python 2.7)
@@ -25,7 +25,7 @@ or:
 pip install requests
 ```
 
-### Installation
+### 2. Installation
 Installation is pretty straight forward.
 
 Install git if not installed:
@@ -48,7 +48,7 @@ Change to the directory to run the script
 ```
 cd /opt/A1TV_EPG
 ```
-### Updating the script
+### 3. Updating the script
 Simply update via git pull.
 
 ```
@@ -56,7 +56,7 @@ cd /opt/A1TV_EPG
 git pull
 ```
 
-### Usage
+### 4. Usage
 The script accepts some command line arguments. The full list can be retrieved starting the tool with *-h* or *--help*
 
 Output of this command:
@@ -83,7 +83,7 @@ optional arguments:
                       file and persistent.
 ```
 
-#### Eaxmple for using UNIX socket import on TVHeadend:
+#### 4.1 Eaxmple for using UNIX socket import on TVHeadend:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -d
 ```
@@ -96,32 +96,32 @@ In order to use this feature activate the following in TVHeadend:
 4. Activate the checkbox "Enabled" and click "Save"
 This will activate the UNIX socket for XMLTV import.
 
-#### Example for saving to a file:
+#### 4.2 Example for saving to a file:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -o /home/hts/xmltv.xml
 ```
 This will save the XMLTV file to the location */home/hts/xmltv.xml*
 
-#### Default behaviour:
+#### 4.3 Default behaviour:
 Starting the script simply without any commandline arguments will result in an xmltv.file saved next to the script. It contains 26h of EPG data for A1TV Plus channels.
 ```
 python /opt/A1TV_EPG/a1tv_epg.py
 ```
 
-#### Updating channel list or change to another type of channel list (basic, plus):
-##### Updating the channel list:
+#### 4.4 Updating channel list or change to another type of channel list (basic, plus):
+##### 4.4.1 Updating the channel list:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -u
 ```
 This will not result in an updated XMLTV file. The channel list is automatically updated every 7 days **before** loading the EPG.
 
-##### Changing the channel list:
+##### 4.4.2 Changing the channel list:
 ```
 python /opt/A1TV_EPG/a1tv_epg.py -c basic
 ```
 Changes the channel list to A1TV basic and reloads updates XMLTV data via socket or replaces the file specified.
 
-#### Automation of the script
+#### 4.5 Automation of the script
 Simplest solution to run it every night:
 ```
 sudo crontab -e
