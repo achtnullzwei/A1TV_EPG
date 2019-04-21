@@ -15,7 +15,7 @@ def load_epg(stations, hours=26):
 
     # Requesting station details from api for processing
     query = request_station_details(stations['ids'], hours)
-    
+
     # Initiating collection to store programs and channels
     tv = {}
     programme = []
@@ -29,8 +29,9 @@ def load_epg(stations, hours=26):
                             + str(station[0]) + '.png'})
 
             for event in station[2]:
-
-                if event[4] == None:
+                if not station[2][0]:
+                    break
+                elif event[4] == None:
                     sub_title = '--'
                 else:
                     sub_title = event[4]
