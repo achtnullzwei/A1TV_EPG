@@ -77,9 +77,9 @@ def generate_xmltv(stations, hours):
     return ET.tostring(tv, encoding='utf8', method='xml').decode('utf8')
 
 # Sends XMLTV data directly to the UNIX socket presented by TVHeadend
-def send_to_tvheadend(message):
+def send_to_tvheadend(message, tvh_socket='/home/hts/.hts/tvheadend/epggrab/xmltv.sock'):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    socket_address = '/home/hts/.hts/tvheadend/epggrab/xmltv.sock'
+    socket_address = tvh_socket
     sock.connect(socket_address)
     sock.sendall(message.encode('utf-8'))
     sock.close()
