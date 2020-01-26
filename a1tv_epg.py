@@ -41,7 +41,7 @@ if __name__ == "__main__":
         stations = load_stations()
         data = generate_xmltv(stations,arguments.t)
         if arguments.u:
-            stations = write_stations()
+            write_stations()
         elif arguments.d == True:
             send_to_tvheadend(data)
         elif arguments.o != None:
