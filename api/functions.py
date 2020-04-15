@@ -31,13 +31,9 @@ def load_epg(stations, hours=26):
             for event in station[2]:
                 if not station[2][0]:
                     break
-                elif event[4] == None:
-                    sub_title = '--'
-                else:
-                    sub_title = event[4]
-
-                start_time = time.strftime('%Y%m%d%H%M%S %z', time.localtime(event[1]))
-                end_time = time.strftime('%Y%m%d%H%M%S %z', time.localtime(event[2]))
+                sub_title = event[4]
+                start_time = time.strftime('%Y%m%d%H%M%S ', time.localtime(event[1])) + time.strftime('%z')
+                end_time = time.strftime('%Y%m%d%H%M%S ', time.localtime(event[2])) + time.strftime('%z')
 
                 programme.append({'channel': station[1], 'episode-num': event[0],
                                   'title': event[3], 'sub-title': sub_title,
@@ -61,18 +57,19 @@ def generate_xmltv(stations, hours):
     # Add XML elements for channels
     for tv_channel in tv_data['channel']:
         xml_channel = ET.SubElement(tv, 'channel', {'id': tv_channel['id']} )
-        ET.SubElement(xml_channel, 'display-name', {'lang': 'en'}).text = tv_channel['display-name']
+        ET.SubElement(xml_channel, 'display-name', {'lang': 'de'}).text = tv_channel['display-name']
         ET.SubElement(xml_channel, 'icon', {'src': tv_channel['icon']})
 
     # Add XML elements for programs
     for tv_programme in tv_data['programme']:
         xml_programme = ET.SubElement(tv, 'programme', {'start': tv_programme['start'], 'stop': tv_programme['stop'], 'channel': tv_programme['channel']})
-        ET.SubElement(xml_programme, 'title', {'lang': 'en'}).text = tv_programme['title']
-        ET.SubElement(xml_programme, 'sub-title', {'lang': 'en'}).text = tv_programme['sub-title']
+        ET.SubElement(xml_programme, 'title', {'lang': 'de'}).text = tv_programme['title']
+        if tv_programme['sub-title'] != None:
+            ET.SubElement(xml_programme, 'sub-title', {'lang': 'de'}).text = tv_programme['sub-title']
         ET.SubElement(xml_programme, 'date').text = tv_programme['date']
 
         for tv_category in tv_programme['category']:
-            ET.SubElement(xml_programme, 'category', {'lang': 'en'}).text = tv_category
+            ET.SubElement(xml_programme, 'category', {'lang': 'de'}).text = tv_category
 
     return ET.tostring(tv, encoding='utf8', method='xml').decode('utf8')
 
