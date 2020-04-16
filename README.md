@@ -81,8 +81,8 @@ optional arguments:
   -u                  Update the channel list JSON file. Calling with -u will
                       not load XMLTV data!
   -c basic, plus      Change channels to A1TV basic or A1TV plus. Default is
-                      A1TV plus. Loads new EPG data. Change is stored in JSON
-                      file and persistent.
+                      A1TV plus. Change is stored in JSON file and persistent.
+                      Will not load new XMLTV data 
 ```
 
 #### 4.1 Eaxmple for using UNIX socket import on TVHeadend:

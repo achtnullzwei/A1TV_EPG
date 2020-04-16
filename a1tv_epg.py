@@ -36,19 +36,23 @@ if __name__ == "__main__":
                 write_stations(arguments.c)
             else:
                 raise ValueError('Wrong entry for Playlist type!')
-
-        # Load stations and generate XMLTV Data or update station list
-        stations = load_stations()
-        data = generate_xmltv(stations,arguments.t)
-        if arguments.u:
+        elif arguments.u:
             write_stations()
         elif arguments.d == True:
+            stations = load_stations()
+            data = generate_xmltv(stations,arguments.t)
             send_to_tvheadend(data)
         elif arguments.o != None:
+            stations = load_stations()
+            data = generate_xmltv(stations,arguments.t)
             save_to_file(data, arguments.o.name)
         elif arguments.s != None:
+            stations = load_stations()
+            data = generate_xmltv(stations,arguments.t)
             send_to_tvheadend(data, arguments.s)
         else:
+            stations = load_stations()
+            data = generate_xmltv(stations,arguments.t)
             save_to_file(data, 'xmltv.xml')
 
     except IOError as msg:
