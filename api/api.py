@@ -120,7 +120,10 @@ def request_stations(type='plus'):
     # Compose station list (name + ID) based on playlist & type
     for title in root[1].findall('{http://xspf.org/ns/0/}track'):
         station_name = title.find('{http://xspf.org/ns/0/}title').text
-        stations['data'].append({'id': station_ids[station_name], 'name': station_name})
-        stations['ids'].append(station_ids[station_name])
+
+        # Validate if the station name actually exists in the JSON response.
+        if station_name in station_ids:
+            stations['data'].append({'id': station_ids[station_name], 'name': station_name})
+            stations['ids'].append(station_ids[station_name])
 
     return stations
