@@ -1,3 +1,5 @@
+## IT seems, A1 is no longer providing this API endpoint. Hence, this project became pretty much useless now. Leaving this repo up for references. 
+
 ## A1TV_EPG
 
 ### Description
